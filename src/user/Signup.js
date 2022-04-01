@@ -85,14 +85,13 @@ export default function Signup (){
             if (data.error) {
                 setValues({ ...values, error: data.error})
             } else {
-                setValues({ ...values, error: '' })
+                setValues({ ...values, error: '' });
+                setSnackbar({
+                    ...snackbar,
+                    open: true,
+                    message: 'Student details saved successfully'
+                });
             }
-        });
-
-        setSnackbar({
-            ...snackbar,
-            open: true,
-            message: 'Student details saved successfully'
         });
     };
 
@@ -124,7 +123,8 @@ export default function Signup (){
         <CardActions>
           <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
         </CardActions>
-        <Snackbar
+      </Card>
+      <Snackbar
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
@@ -134,7 +134,5 @@ export default function Signup (){
             autoHideDuration={2000}
             message={<span className={classes.snack}>{snackbar.message}</span>}
         />
-      </Card>
-      
     </div>)
 }
