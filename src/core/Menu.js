@@ -36,7 +36,7 @@ function Menu (props) {
                 </Link>
                 </div>
                 <div style={{ position: 'absolute', right: '10px '}}><span style={{ float: 'right'}}>
-                {
+                {/* {
                     !auth.isAuthenticated() && (<span>
                     <Link to="/signup">
                         <Button style={isActive(props.history, '/signup')}>Sign up</Button>
@@ -45,7 +45,7 @@ function Menu (props) {
                         <Button style={isActive(props.history, '/signin')}>Sign in</Button>
                     </Link>
                     </span>)
-                }
+                } */}
                 {
                     auth.isAuthenticated() && (<span>
                     <Link to={"/user/" + auth.isAuthenticated().user._id}>

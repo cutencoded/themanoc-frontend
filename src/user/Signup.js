@@ -14,6 +14,8 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import {create} from './api-user.js'
 import {Link} from 'react-router-dom'
+import Snackbar from '@material-ui/core/Snackbar';
+
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -42,7 +44,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Signup (){
-    const classes = useStyles()
+    const classes = useStyles();
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: ''
+    });
+
     const [values, setValues] = useState({
         studentId: '',
         firstName: '',
@@ -78,10 +85,20 @@ export default function Signup (){
             if (data.error) {
                 setValues({ ...values, error: data.error})
             } else {
-                setValues({ ...values, error: '', open: true})
+                setValues({ ...values, error: '' })
             }
-        })
+        });
+
+        setSnackbar({
+            ...snackbar,
+            open: true,
+            message: 'Student details saved successfully'
+        });
     };
+
+    const handleRequestClose = (event, reason) => {
+        setSnackbar({...snackbar, open: false })
+    }
 
     return (<div>
       <Card className={classes.card}>
@@ -107,21 +124,17 @@ export default function Signup (){
         <CardActions>
           <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
         </CardActions>
+        <Snackbar
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+            }}
+            open={snackbar.open}
+            onClose={handleRequestClose}
+            autoHideDuration={2000}
+            message={<span className={classes.snack}>{snackbar.message}</span>}
+        />
       </Card>
-      <Dialog open={values.open} disableBackdropClick={true}>
-        <DialogTitle>New Account</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            New account successfully created.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Link to="/signin">
-            <Button color="primary" autoFocus="autoFocus" variant="contained">
-              Sign In
-            </Button>
-          </Link>
-        </DialogActions>
-      </Dialog>
+      
     </div>)
 }
