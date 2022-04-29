@@ -22,7 +22,7 @@ import { listByUser, userTranslationCount } from './../translation/translation-a
 
 const useStyles = makeStyles(theme => ({
     root: theme.mixins.gutters({
-        maxWidth: 600,
+        maxWidth: 350,
         margin: 'auto',
         padding: theme.spacing(3),
         marginTop: theme.spacing(5)
@@ -137,7 +137,7 @@ export default function Profile({ match }) {
                 <ListItemAvatar>
                 <Avatar src={photoUrl} className={classes.bigAvatar}/>
                 </ListItemAvatar>
-                <ListItemText primary={values.user.name} secondary={values.user.email}/>
+                <ListItemText primary={values.user.name} />
                 { auth.isAuthenticated().user && auth.isAuthenticated().user._id == values.user._id
                     ? (<ListItemSecondaryAction>
                         <Link to={"/user/edit/" + values.user._id}>

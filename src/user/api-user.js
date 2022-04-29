@@ -1,15 +1,15 @@
 import queryString from 'query-string';
 import config from './../config/config'; 
 
-const create = async (student) => {
+const create = async (user) => {
   try {
-    let response = await fetch(`${config.serverUrl}/api/students/`, {
+    let response = await fetch(`${config.serverUrl}/api/users/`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(student)
+      body: JSON.stringify(user)
     })
     return await response.json()
   } catch(err) {

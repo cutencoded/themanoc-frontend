@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     root: theme.mixins.gutters({
         padding: theme.spacing(1),
         margin: 'auto',
-        maxWidth: 600,
+        maxWidth: 350,
         marginTop: theme.spacing(5)
     }),
     title: {

@@ -15,7 +15,7 @@ import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 600,
+    maxWidth: 350,
     margin: 'auto',
     textAlign: 'center',
     marginTop: theme.spacing(5),

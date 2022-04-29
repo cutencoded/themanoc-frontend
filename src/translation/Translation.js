@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: 'rgba(0, 0, 0, 0.06)'
     },
     cardContent: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         padding: `${theme.spacing(2)}px 0px`
     },
     cardHeader: {
